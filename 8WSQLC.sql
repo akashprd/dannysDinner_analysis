@@ -113,6 +113,13 @@ WHERE order_rank = 1;
 -- 8. What is the total items and amount spent for each member before they became a member?
 
 
+-- visit before becoming a member
+SELECT S1.customer_id, S1.order_date,S1.product_id 
+    FROM SALES S1 JOIN MEMBERS M1
+    ON S1.customer_id = M1.customer_id
+    WHERE S1.order_date < M1.join_date;
+
+-- main code
 
 WITH total_order AS(
     SELECT S1.customer_id, S1.order_date,S1.product_id 
